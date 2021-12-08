@@ -55,7 +55,8 @@ In het Environment.cs script bestand is de code geschreven om er voor te zorgen 
  <br />
 In onze Environment klasse zal de functie SpawEnemies er voor zorgen dat de enemies tevoorschijn komen, dit binnen een zelf gekozen duratie.
 
-<code>public void SpawnEnemies()
+<code>
+ public void SpawnEnemies()
     {
         GameObject newEnemy = Instantiate(policeCarPrefab.gameObject);
 
@@ -63,7 +64,8 @@ In onze Environment klasse zal de functie SpawEnemies er voor zorgen dat de enem
         newEnemy.transform.localPosition = enemies.transform.localPosition;
         newEnemy.transform.localRotation = enemies.transform.localRotation;
 
-    }</code>
+    }
+</code>
 
 
 
