@@ -19,7 +19,7 @@ De agent of taxi kan 2 situaties observeren:
 1. Een naderende politiewagen
 2. Geen naderende politiewagen
 
-## Observaties
+## Acties
 
 De agent of taxi kan 2 acties uitvoeren om te reageren op de observaties:
 
