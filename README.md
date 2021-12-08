@@ -14,8 +14,28 @@ Wanneer u de applicatie start zal u zien dat een taxi centraal in beeld zal staa
 
 ## Observaties
 
+De agent of taxi kan 2 situaties observeren:
+
+1. Een naderende politiewagen
+2. Geen naderende politiewagen
+
+## Observaties
+
+De agent of taxi kan 2 acties uitvoeren om te reageren op de observaties:
+
+1. Springen
+2. Niet springen
+
+## Beloning
+
+Als we nu alle mogelijke situaties bekijken die zich kunnen voordoen dan kunnen we volgend beloningssysteem hanteren:
+
 |        Observaties       |      Acties     |  Beloning |
 |------------------------- |:---------------:|----------:|
 |  Naderende politiewagen  |     Springen    |   +0.1f   |
 |  Naderende politiewagen  |  Niet springen  |   -1.0f   |
 |          Niets           |     Springen    |   -0.2f   |
+
+
+
+
