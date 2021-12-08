@@ -54,6 +54,7 @@ Om voor een duidelijke structuur te zorgen maak je best een folder Scripts aan i
 In het Environment.cs script bestand is de code geschreven om er voor te zorgen dat de Enemies (PoliceCar) tevoorschijn te laten komen op de weg. Bij het starten van het Unity project zal dit dus automatisch gebeuren. <br />
  <br />
 In onze Environment klasse zal de functie SpawEnemies er voor zorgen dat de enemies tevoorschijn komen, dit binnen een zelf gekozen duratie.
+
 `public void SpawnEnemies()
     {
         GameObject newEnemy = Instantiate(policeCarPrefab.gameObject);
