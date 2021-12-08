@@ -37,12 +37,11 @@ Als we nu alle mogelijke situaties bekijken die zich kunnen voordoen dan kunnen 
 |          Niets           |     Springen    |   -0.2f   |
 
 ## Ray perception
-De acties die onze taxi uitvoert zijn gebaseerd op de observaties die worden gedaan. Om dit mogelijk te maken hebben we gebruik gemaakt van de **Ray Perception Sensor3D** component. 
+De acties die onze taxi uitvoert zijn gebaseerd op de observaties die worden gemaakt. Om dit mogelijk te maken hebben we gebruik gemaakt van de **Ray Perception Sensor3D** component. 
 
 ![image](https://user-images.githubusercontent.com/61239203/145287905-6fdc2e5f-cc50-459c-b1e3-1e9579ee26f2.png)
 
-De taxi zal vooral recht voorruit moeten kunnen kijken omdat de obstakels, in dit geval politiewagens, van deze richting zullen komen. 
-
+De taxi zal vooral recht voorruit moeten kunnen kijken omdat de obstakels, in dit geval politiewagens van deze richting zullen komen. 
 ![image](https://user-images.githubusercontent.com/61239203/145288077-c0e823b3-1180-488d-b0f8-76d24f1231f0.png)
 
 ## Beschrijving code
@@ -52,7 +51,18 @@ Om voor een duidelijke structuur te zorgen maak je best een folder Scripts aan i
 ![image](https://user-images.githubusercontent.com/61239203/145288226-98ffe34b-dfa1-45d8-a918-217d0f72324a.png)
 
 **Environment.cs** <br />
-Het Environment.cs script bevat de code geschreven die ervoor zorgt dat de Enemies (PoliceCar) tevoorschijn komen op de weg. Bij het starten van het Unity project zal dit dus automatisch gebeuren. 
+In het Environment.cs script bestand is de code geschreven om er voor te zorgen dat de Enemies (PoliceCar) tevoorschijn te laten komen op de weg. Bij het starten van het Unity project zal dit dus automatisch gebeuren. <br />
+ <br />
+In onze Environment klasse zal de functie SpawEnemies er voor zorgen dat de enemies tevoorschijn komen, dit binnen een zelf gekozen duratie.
+`public void SpawnEnemies()
+    {
+        GameObject newEnemy = Instantiate(policeCarPrefab.gameObject);
+
+        newEnemy.transform.SetParent(enemies.transform);
+        newEnemy.transform.localPosition = enemies.transform.localPosition;
+        newEnemy.transform.localRotation = enemies.transform.localRotation;
+
+    }`
 
 
 
