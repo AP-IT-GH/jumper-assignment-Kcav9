@@ -45,12 +45,12 @@ De taxi zal vooral recht voorruit moeten kunnen kijken omdat de obstakels, in di
 ![image](https://user-images.githubusercontent.com/61239203/145288077-c0e823b3-1180-488d-b0f8-76d24f1231f0.png)
 
 ## Beschrijving code
-**Spelobjecten scripts (C#)** 
+**Spelobjecten scripts (C#)** <br />
 Om voor een duidelijke structuur te zorgen maak je best een folder Scripts aan in je Assets van Unity. Hier zullen vervolgens alle scripts gebundeld en bewaard worden.
 
 ![image](https://user-images.githubusercontent.com/61239203/145288226-98ffe34b-dfa1-45d8-a918-217d0f72324a.png)
 
-**Environment.cs**
+**Environment.cs** <br />
 In het Environment.cs script bestand is de code geschreven om er voor te zorgen dat de Enemies (PoliceCar) tevoorschijn te laten komen op de weg. Bij het starten van het Unity project zal dit dus automatisch gebeuren. 
 
 
