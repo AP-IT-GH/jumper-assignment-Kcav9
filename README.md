@@ -2,7 +2,7 @@
 
 ## Inleiding
 
-Via deze tutorial proberen wij u stapsgewijs te gidsen door ons Machine Learning project. We maakten gebruik van Unity, Anaconda en de ML-Agents package om een taxi te kunnen leren springen over politiewagens.
+Via deze tutorial proberen wij u stapsgewijs te gidsen door ons Machine Learning project. We maakten gebruik van Unity, Anaconda en de ML-Agents package om een taxi te kunnen leren springen over politiewagens. Clone dit project en volg onze stappen om tot een gewenst resultaat te komen.
 Heel veel plezier met het uitvoeren van deze opdracht!
 
 ![image](https://user-images.githubusercontent.com/73060860/145276168-179004ce-8633-4630-8438-68e651c2a230.png)
@@ -51,9 +51,9 @@ Om voor een duidelijke structuur te zorgen maak je best een folder Scripts aan i
 ![image](https://user-images.githubusercontent.com/61239203/145288226-98ffe34b-dfa1-45d8-a918-217d0f72324a.png)
 
 **Environment.cs** <br />
-In het Environment.cs script bestand is de code geschreven om er voor te zorgen dat de Enemies (PoliceCar) tevoorschijn te laten komen op de weg. Bij het starten van het Unity project zal dit dus automatisch gebeuren. <br />
+In het Environment.cs script is de code geschreven om er voor te zorgen dat de Enemies (PoliceCar) tevoorschijn komen op de weg. Bij het starten van het Unity project zal dit dus automatisch gebeuren. <br />
  <br />
-In onze Environment klasse zal de functie SpawEnemies er voor zorgen dat de enemies tevoorschijn komen, dit binnen een zelf gekozen duratie.
+In onze Environment klasse zal de functie SpawnEnemies er voor zorgen dat de enemies 1 voor 1 tevoorschijn komen, dit binnen een zelf gekozen tijdspanne.
 
 ```csharp
  public void SpawnEnemies()
