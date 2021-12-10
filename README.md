@@ -36,6 +36,10 @@ Als we nu alle mogelijke situaties bekijken die zich kunnen voordoen dan kunnen 
 |  Naderende politiewagen  |  Niet springen  |   -1.0f   |
 |          Niets           |     Springen    |   -0.2f   |
 
+## Taxi
+De taxi zal de rol van agent op zich nemen. Hij zal vervolgens dus een obstakel gaan observeren/detecteren zodat er op het juiste moment gesprongen kan worden. 
+![image](https://user-images.githubusercontent.com/61239203/145558923-4153a262-916b-4cf9-b0bb-ae724e64d415.png)
+
 ## Ray perception
 De acties die onze taxi uitvoert zijn gebaseerd op de observaties die worden gemaakt. Om dit mogelijk te maken hebben we gebruik gemaakt van de **Ray Perception Sensor3D** component. 
 
