@@ -98,7 +98,7 @@ Om voor een duidelijke structuur te zorgen maak je best een folder Scripts aan i
 ![image](https://user-images.githubusercontent.com/61239203/145288226-98ffe34b-dfa1-45d8-a918-217d0f72324a.png)
 
 **Environment.cs** <br />
-In het Environment.cs script is de code geschreven om er voor te zorgen dat de Enemies (PoliceCar) tevoorschijn komen op de weg. Bij het starten van het Unity project zal dit dus automatisch gebeuren. <br />
+In het Environment.cs script staat de code die ervoor zorgt dat de Enemies (PoliceCar) tevoorschijn komen op de weg. Bij het starten van het Unity project zal dit dus automatisch gebeuren. <br />
  <br />
 In onze Environment klasse zal de functie SpawnEnemies er voor zorgen dat de enemies 1 voor 1 tevoorschijn komen, dit binnen een zelf gekozen tijdspanne.
 
@@ -115,10 +115,10 @@ In onze Environment klasse zal de functie SpawnEnemies er voor zorgen dat de ene
 ```
 
 **Taxi.cs** <br />
-Onze Taxi klasse is onze Agent. <br> ![image](https://user-images.githubusercontent.com/61239203/145587282-642c8a33-d562-4140-834f-fead3d4c3529.png)
+Het Taxi script wordt gebruikt door onze Agent. <br> ![image](https://user-images.githubusercontent.com/61239203/145587282-642c8a33-d562-4140-834f-fead3d4c3529.png)
  <br />
  
-Er worden 2 SerializeFields toegevoegd die achteraf nog worden ingevuld in het Taxi Object van Unity zoals eerder werd besproken. 
+Er worden 2 SerializeFields toegevoegd die achteraf nog worden opgevuld in het Taxi Object van Unity zoals eerder werd besproken. 
 ```csharp
     [SerializeField] private float jumpForce;
     [SerializeField] private KeyCode jumpKey;
@@ -174,13 +174,13 @@ behaviors:
 
 ```
 
-**Belangrijk** dat je er voor zorgt dat de Behavior Name in het Taxi object overeenkomt met die in de .yml bestand: 
+**Belangrijk** dat je er voor zorgt dat de Behavior Name in het Taxi object overeenkomt met die in het .yml bestand: 
 ![image](https://user-images.githubusercontent.com/61239203/145582496-8db57201-6e2c-4caf-850f-7c093143198b.png)
 
 ## Tensorboard Resultaten
-De resultaten van de training zijn zichtbaar in onderstaande training: 
+De resultaten van de training zijn zichtbaar in onderstaande grafieken: 
 ![image](https://user-images.githubusercontent.com/61239203/145583377-881abc37-5bcb-4bd4-b45d-b363c813b0f7.png) <br>
-Je ziet dat in de grafiek van de Cumulative Reward er een duidelijke stijging is. Het lijkt er dus op dat dat de agent steeds beter presteert en vaker springt zonder te botsen. Dit kun je dus ook waarnemen in de Episode Length, waar we kunnen zien dat lengte van de episode langer duurt naarmate de training. 
+Je merkt op dat in de grafiek van de Cumulative Reward een duidelijke stijging aanwezig is. Het lijkt er dus op dat de agent steeds beter presteert en vaker springt zonder op de politiewagen te botsen. Dit kun je dus ook waarnemen in de Episode Length, waar je kan zien dat lengte van de episode langer is naarmate het einde van de training. 
 
 
 
