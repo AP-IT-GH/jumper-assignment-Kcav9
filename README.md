@@ -115,19 +115,28 @@ In onze Environment klasse zal de functie SpawnEnemies er voor zorgen dat de ene
 ```
 
 **Taxi.cs** <br />
-Onze Taxi klasse is onze Agent. ![image](https://user-images.githubusercontent.com/61239203/145587282-642c8a33-d562-4140-834f-fead3d4c3529.png)
+Onze Taxi klasse is onze Agent. <br> ![image](https://user-images.githubusercontent.com/61239203/145587282-642c8a33-d562-4140-834f-fead3d4c3529.png)
  <br />
- Dit script zorgt er voor dat we 
-In onze Environment klasse zal de functie SpawnEnemies er voor zorgen dat de enemies 1 voor 1 tevoorschijn komen, dit binnen een zelf gekozen tijdspanne.
-
+ 
+Er worden 2 SerializeFields toegevoegd die achteraf nog worden ingevuld in het Taxi Object van Unity zoals eerder werd besproken. 
 ```csharp
- public void SpawnEnemies()
-    {
-        GameObject newEnemy = Instantiate(policeCarPrefab.gameObject);
+    [SerializeField] private float jumpForce;
+    [SerializeField] private KeyCode jumpKey;
+    private Vector3 startingPosition;
+    private bool canJump = true;
+    private bool gotFries = false;
 
-        newEnemy.transform.SetParent(enemies.transform);
-        newEnemy.transform.localPosition = enemies.transform.localPosition;
-        newEnemy.transform.localRotation = enemies.transform.localRotation;
+    private Rigidbody body;
+    private Environment environment;
+
+    public event Action OnReset;
+
+
+    public override void Initialize()
+    {
+        body = GetComponent<Rigidbody>();
+        environment = GetComponentInParent<Environment>();
+        startingPosition = transform.position;
 
     }
 ```
