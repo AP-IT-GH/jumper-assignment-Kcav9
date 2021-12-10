@@ -50,8 +50,19 @@ De acties die onze taxi uitvoert zijn gebaseerd op de observaties die worden gem
 De taxi zal vooral recht voorruit moeten kunnen kijken omdat de obstakels, in dit geval politiewagens van deze richting zullen komen. 
 ![image](https://user-images.githubusercontent.com/61239203/145288077-c0e823b3-1180-488d-b0f8-76d24f1231f0.png)
 
+Er zal een *Rigidbody &  een Box Collider* moeten worden toegevoegd om collision te kunnen detecteren. 
+
+![image](https://user-images.githubusercontent.com/61239203/145560400-fd122ea5-c5ba-4e5d-8744-6f5531888cc6.png)
+
+
+Je moet er voor zorgen dat het Taxi.cs script wordt toegevoegd. Zodat je een keyboard knop kan toewijzen moest je de taxi zelf willen besturen. Verder kies je ook de Jump Force waar bij je bepaalt hoe hoog de taxi zal springen. Moest je dit nodig vinden kan je eventueel nog een scoreboard toevoegen om de scores bij te houden. 
+![image](https://user-images.githubusercontent.com/61239203/145560667-2809406d-c71d-4198-bef1-3f7839883c27.png)
+
+
+
+
 ## Police car
-Het obstakel waar onze agent rekening met zal gaan houden is de politiewagen. Deze is terug te vinden in de Prefab folder. 
+Het obstakel waar onze agent (de taxi) rekening met zal gaan houden is de politiewagen. Deze is terug te vinden in de Prefab folder. Als de politiewagens worden geïmplementeerd, zal er automatisch een *Rigidbody & Box Collider* toegewezen worden omdat deze in de Prefab al reeds zijn toegevoegd.
 
 ![image](https://user-images.githubusercontent.com/61239203/145559650-847df44d-e738-4046-8351-0d563a1b096a.png)
 
