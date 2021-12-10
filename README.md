@@ -244,6 +244,7 @@ In deze if-statement wordt er gekeken of er zich een collision voordoet met de P
 ```
 
 Rijd de Agent (Taxi) op de Road en heeft de frietjes kunnen opnemen boven de PoliceCar, dan wordt canJump op True geplaatst zodat er terug gesprongen kan worden. De gotFries boolean zal terug op False getet worden. 
+
 ```csharp
          if (collision.gameObject.CompareTag("Road") && gotFries)
         {
@@ -252,9 +253,11 @@ Rijd de Agent (Taxi) op de Road en heeft de frietjes kunnen opnemen boven de Pol
         }
     }
 ```
+
 <br>
 Als laatste geven we de Agent (Taxi) een beloning als er succesvol over het obstakel (PoliceCar) is gesprongen. Wanneer er collision is met de tag "Point" , zal de Agent een reward van +0.2f ontvangen. De boolean gotFries wordt terug op True geplaatst.
 Dit alles wordt geïmplementeerd door onderstaande methode:
+
 ```csharp
 private void OnTriggerEnter(Collider collision)
     {
@@ -265,6 +268,7 @@ private void OnTriggerEnter(Collider collision)
         }
     }
 ```
+
 <br>
 De point tag zie je hier duidelijk weergeven. Het is belangrijk dat je deze ook zelf toevoegd aan de Prefab French Frice. <br>
 ![image](https://user-images.githubusercontent.com/61239203/145637484-081b4d84-7735-4659-8879-3f7b39393348.png)
