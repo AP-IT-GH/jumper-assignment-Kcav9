@@ -271,6 +271,7 @@ private void OnTriggerEnter(Collider collision)
 
 <br>
 De point tag zie je hier duidelijk weergeven. Het is belangrijk dat je deze ook zelf toevoegd aan de Prefab French Frice. <br>
+
 ![image](https://user-images.githubusercontent.com/61239203/145637484-081b4d84-7735-4659-8879-3f7b39393348.png)
 
 ## Training
