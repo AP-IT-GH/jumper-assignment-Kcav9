@@ -35,7 +35,7 @@ Als we nu alle mogelijke situaties bekijken die zich kunnen voordoen dan kunnen 
 |  Naderende politiewagen  |     Springen    |   +0.1f   |
 |  Naderende politiewagen  |  Niet springen  |   -1.0f   |
 |          Niets           |     Springen    |   -0.2f   |
-|  Openemen soda en fries  |     Springen    |   + 0.2f  |
+|   Soda en Frieten        |     Springen    |   +0.2f  |
 
 Belangrijk om er ook voor te zorgen dat in de functie **OnActionReceived()** er een kleine negatieve score wordt gegeven om te voorkomen dat de agent niet hele tijd zou springen.
 ```csharp
@@ -66,9 +66,12 @@ Er zal een *Rigidbody &  een Box Collider* moeten worden toegevoegd om collision
 Je moet er voor zorgen dat het Taxi.cs script wordt toegevoegd. Zodat je een keyboard knop kan toewijzen moest je de taxi zelf willen besturen. Verder kies je ook de Jump Force waar bij je bepaalt hoe hoog de taxi zal springen. Moest je dit nodig vinden kan je eventueel nog een scoreboard toevoegen om de scores bij te houden. 
 ![image](https://user-images.githubusercontent.com/61239203/145560667-2809406d-c71d-4198-bef1-3f7839883c27.png)
 
-Tot slot is zijn er de Behavior Paramters. Deze zullen automatisch worden toegevoegd als het taxi scirpt juist is gegeven aan het Taxi object. Wel belangrijk dat je de juist naam gebruikt en de juiste instellingen. Vul de naam Mover in. Als je een eerder getraind brein wilt gebruiken voeg je deze toe bij Model en zet je Bbehavior Type op Inference Only
-
+Tot slot is zijn er de Behavior Paramters. Deze zullen automatisch worden toegevoegd als het taxi scirpt juist is gegeven aan het Taxi object. Wel belangrijk dat je de juist naam gebruikt en de juiste instellingen. Vul de naam Mover in. Als je een eerder getraind brein wilt gebruiken voeg je deze toe bij Model en zet je Behavior Type op Inference Only
 ![image](https://user-images.githubusercontent.com/61239203/145561536-5412b4b4-c390-4465-86c5-9b7b849d7069.png)
+
+Wil je zelf een training starten plaats je Behavior Type op Default, het is niet nodig om een Model toe te voegen in dit geval.
+![image](https://user-images.githubusercontent.com/61239203/145579737-30744af9-e637-4146-977e-ddf0a5b215b2.png)
+
 
 ## Ray perception
 De acties die onze taxi uitvoert zijn gebaseerd op de observaties die worden gemaakt. Om dit mogelijk te maken hebben we gebruik gemaakt van de **Ray Perception Sensor3D** component. 
@@ -110,6 +113,40 @@ In onze Environment klasse zal de functie SpawnEnemies er voor zorgen dat de ene
 
     }
 ```
+
+## Training
+Als laatste stap bekijken we kort de trainingsfase. Maak een folder Learning aan in de Assets. In deze folder maak je een .yml file aan. In ons voorbeeld is dit dus Mover.yml. In dit bestand voeg je de juiste parameters toe. Tijdens onze training hebben we onderstaande waardes gebruikt: 
+
+```
+behaviors:
+  Mover:
+    trainer_type: ppo
+    hyperparameters:
+      batch_size: 32
+      buffer_size: 256
+      learning_rate: 0.0003
+      beta: 0.005
+      epsilon: 0.2
+      lambd: 0.95
+      num_epoch: 3
+      learning_rate_schedule: linear
+    network_settings:
+      normalize: false
+      hidden_units: 20
+      num_layers: 1
+      vis_encode_type: simple
+    reward_signals:
+      extrinsic:
+        gamma: 0.9
+        strength: 1.0
+    keep_checkpoints: 5
+    max_steps: 500000
+    time_horizon: 3
+    summary_freq: 2000
+    threaded: true
+
+```
+
 
 
 
