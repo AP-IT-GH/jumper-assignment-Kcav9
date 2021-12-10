@@ -137,9 +137,10 @@ private void FixedUpdate()
 ```
 
 **Taxi.cs** <br />
-Het Taxi script wordt gebruikt door onze Agent. <br> ![image](https://user-images.githubusercontent.com/61239203/145587282-642c8a33-d562-4140-834f-fead3d4c3529.png)
+Het Taxi script wordt gebruikt door onze Agent. <br> ![image](https://user-images.githubusercontent.com/61239203/145628286-507ec4b0-9454-46fe-80de-5fc0dd4832ff.png)
  <br />
  
+ **Variabelen** <br/>
 Er worden 2 SerializeFields toegevoegd die achteraf nog worden opgevuld in het Taxi Object van Unity zoals eerder werd besproken. 
 ```csharp
     [SerializeField] private float jumpForce;
@@ -147,21 +148,126 @@ Er worden 2 SerializeFields toegevoegd die achteraf nog worden opgevuld in het T
     private Vector3 startingPosition;
     private bool canJump = true;
     private bool gotFries = false;
-
     private Rigidbody body;
     private Environment environment;
-
     public event Action OnReset;
+```
+
+De canJump variabele is een boolean die default op True staat, dit zal zo blijven wanneer de taxi niet in de lucht is. Er zal False teruggegeven worden als de taxi zich in de lucht bevindt. De gotFries boolean is noodzakelijk om een beloning te geven aan de taxi als hij succesvol over het obstakel (Politie wagen) is gesprongen.
 
 
-    public override void Initialize()
+**OnEpisodeBegin**<br/>
+Bij het begin van elke episode, zal de canJump boolean op true gezet worden, de Agent wordt op zijn startpositie geplaatst samen met het leegamken van de environment.
+```csharp
+ public override void OnEpisodeBegin()
     {
-        body = GetComponent<Rigidbody>();
-        environment = GetComponentInParent<Environment>();
-        startingPosition = transform.position;
+        canJump = true;
+        transform.position = startingPosition;
+        body.velocity = Vector3.zero;
+
+        environment.ClearEnvironment();
+    }
+ ```
+ **Heuristic**<br/>
+ De Heuristic functie is vooral van toepassing bij het zelf besturen van de Agent. De methode zal helpen om de correcte werking en beloning van de Taxi te testen zodat.
+ ```csharp
+   public override void Heuristic(in ActionBuffers actionsOut)
+    {
+        var discreteActionsOut = actionsOut.DiscreteActions;
+        discreteActionsOut[0] = 0;
+
+        if (Input.GetKey(jumpKey))
+        {
+            discreteActionsOut[0] = 1;
+        }
+           
+    }
+  ```
+  
+**OnActionReceived**<br/>
+Deze methode wordt geïmplementeerd om het gedrag van agenten bij elke stap te specificeren, op basis van de opgegeven actie. 
+<br/>
+Deze methode zal er voor zorgen dat de Agent (Taxi) zal gaan springen als canJump True is. Op deze manier zal de Agent alleen kunnen springen als hij zich op de Road bevindt.
+1 staat hier voor te springen. 0 staat voor het stil staan v.d. Agent. 
+```csharp
+  public override void OnActionReceived(ActionBuffers actions)
+    {
+        var vectorAction = actions.DiscreteActions;
+        if (vectorAction[0] == 1)
+        {
+            AddReward(-0.01f);
+            Jump();
+        }
+            
 
     }
 ```
+
+```csharp
+  private void Jump()
+    {
+        if (canJump)
+        {
+            body.AddForce(new Vector3(0, jumpForce, 0), ForceMode.VelocityChange);
+            canJump = false;
+        }
+
+
+    }
+```
+
+
+ **OnCollisionEnter**<br/>
+ 
+De methode OnCollisionEnter wordt aangeroepen wanneer een collider/rigidbody een ander collider/rigidbody aanraakt. In ons project wordt er eerst en vooral gekeken of er collision is met de Road. De CompareTag() methode wordt gebruikt om de identiteit van het object te achterhalen waarmee de Agent (Taxi) in botsing treedt.
+
+```csharp
+  private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Road") )
+        {
+            canJump = true;
+        }
+    }
+ ```
+ 
+ <br>
+In deze if-statement wordt er gekeken of er zich een collision voordoet met de PoliCar (Obstacle). Moest dit zich voordoen zal er een negatieve award van -1f worden toegewezen. Tot slot wordt de huidige episode beëndigd. 
+
+ ```csharp
+        if (collision.transform.CompareTag("PoliceCar"))
+        {
+            Destroy(collision.gameObject);
+            AddReward(-1f);
+            EndEpisode();
+        }
+```
+
+Rijd de Agent (Taxi) op de Road en heeft de frietjes kunnen opnemen boven de PoliceCar, dan wordt canJump op True geplaatst zodat er terug gesprongen kan worden. De gotFries boolean zal terug op False getet worden. 
+```csharp
+         if (collision.gameObject.CompareTag("Road") && gotFries)
+        {
+            canJump = true;
+            gotFries = false;
+        }
+    }
+```
+<br>
+Als laatste geven we de Agent (Taxi) een beloning als er succesvol over het obstakel (PoliceCar) is gesprongen. Wanneer er collision is met de tag "Point" , zal de Agent een reward van +0.2f ontvangen. De boolean gotFries wordt terug op True geplaatst.
+Dit alles wordt geïmplementeerd door onderstaande methode:
+```csharp
+private void OnTriggerEnter(Collider collision)
+    {
+        if (collision.gameObject.CompareTag("Point"))
+        {
+            AddReward(0.2f);
+            gotFries = true;
+        }
+    }
+```
+<br>
+De point tag zie je hier duidelijk weergeven. Het is belangrijk dat je deze ook zelf toevoegd aan de Prefab French Frice. <br>
+![image](https://user-images.githubusercontent.com/61239203/145637484-081b4d84-7735-4659-8879-3f7b39393348.png)
 
 ## Training
 Als laatste stap bekijken we kort de trainingsfase. Maak een folder Learning aan in de Assets. In deze folder maak je een .yml file aan. In ons voorbeeld is dit dus Mover.yml. In dit bestand voeg je de juiste parameters toe. Tijdens onze training hebben we onderstaande waardes gebruikt: 
