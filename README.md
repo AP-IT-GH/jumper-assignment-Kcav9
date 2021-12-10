@@ -147,6 +147,10 @@ behaviors:
 
 ```
 
+**Belangrijk** dat je er voor zorgt dat de Behavior Name in het Taxi object overeenkomt met die in de .yml bestand: 
+![image](https://user-images.githubusercontent.com/61239203/145582496-8db57201-6e2c-4caf-850f-7c093143198b.png)
+
+
 
 
 
