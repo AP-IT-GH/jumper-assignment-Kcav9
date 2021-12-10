@@ -150,6 +150,12 @@ behaviors:
 **Belangrijk** dat je er voor zorgt dat de Behavior Name in het Taxi object overeenkomt met die in de .yml bestand: 
 ![image](https://user-images.githubusercontent.com/61239203/145582496-8db57201-6e2c-4caf-850f-7c093143198b.png)
 
+## Tensorboard Resultaten
+De resultaten van de training zijn zichtbaar in onderstaande training: 
+![image](https://user-images.githubusercontent.com/61239203/145583377-881abc37-5bcb-4bd4-b45d-b363c813b0f7.png)
+Je ziet dat in de grafiek van de Cumulative Reward er een duidelijke stijging is. Het lijkt er dus op dat dat de agent steeds beter presteert en vaker springt zonder te botsen. Dit kun je dus ook waarnemen in de Episode Length, waar we kunnen zien dat lengte van de episode langer duurt naarmate de training. 
+
+
 
 
 
