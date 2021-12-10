@@ -114,7 +114,7 @@ In onze Environment klasse zal de functie SpawnEnemies er voor zorgen dat de ene
     }
 ```
 
-**Obstacle.cs**
+**Obstacle.cs** <br/>
 In dit script wordt de snelheid bepaald van de obstakels (politiewagens). Er zal een min en max speed worden toegewezen volgens 2 SerializeFields.
 ```csharp
 [SerializeField] private float minSpeed;
