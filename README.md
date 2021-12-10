@@ -153,11 +153,11 @@ Er worden 2 SerializeFields toegevoegd die achteraf nog worden opgevuld in het T
     public event Action OnReset;
 ```
 
-De canJump variabele is een boolean die default op True staat, dit zal zo blijven wanneer de taxi niet in de lucht is. Er zal False teruggegeven worden als de taxi zich in de lucht bevindt. De gotFries boolean is noodzakelijk om een beloning te geven aan de taxi als hij succesvol over het obstakel (Politie wagen) is gesprongen.
+De canJump variabele is een boolean die default op True staat. Dit zal zo blijven wanneer de taxi niet in de lucht is. De boolean zal de waarde False krijgen als de taxi zich in de lucht bevindt. De gotFries boolean is noodzakelijk om een beloning te geven aan de taxi als hij succesvol over het obstakel (Politie wagen) is gesprongen.
 
 
 **OnEpisodeBegin**<br/>
-Bij het begin van elke episode, zal de canJump boolean op true gezet worden, de Agent wordt op zijn startpositie geplaatst samen met het leegamken van de environment.
+Bij het begin van elke episode, zal de canJump boolean op true gezet worden en de Agent wordt op zijn startpositie geplaatst. De environment wordt opnieuw gereset.
 ```csharp
  public override void OnEpisodeBegin()
     {
@@ -169,7 +169,7 @@ Bij het begin van elke episode, zal de canJump boolean op true gezet worden, de 
     }
  ```
  **Heuristic**<br/>
- De Heuristic functie is vooral van toepassing bij het zelf besturen van de Agent. De methode zal helpen om de correcte werking en beloning van de Taxi te testen zodat.
+ De Heuristic functie is vooral van toepassing bij het zelf besturen van de Agent. De methode zal helpen om de correcte werking en beloning van de Taxi te testen.
  ```csharp
    public override void Heuristic(in ActionBuffers actionsOut)
     {
@@ -185,10 +185,9 @@ Bij het begin van elke episode, zal de canJump boolean op true gezet worden, de 
   ```
   
 **OnActionReceived**<br/>
-Deze methode wordt geïmplementeerd om het gedrag van agenten bij elke stap te specificeren, op basis van de opgegeven actie. 
+Deze methode wordt geïmplementeerd om het gedrag van de agent bij elke stap te specificeren, op basis van de opgegeven actie. 
 <br/>
-Deze methode zal er voor zorgen dat de Agent (Taxi) zal gaan springen als canJump True is. Op deze manier zal de Agent alleen kunnen springen als hij zich op de Road bevindt.
-1 staat hier voor te springen. 0 staat voor het stil staan v.d. Agent. 
+Deze methode zal er voor zorgen dat de Agent (Taxi) zal gaan springen als de waarde van canJump True is. Op deze manier zal de Agent alleen kunnen springen als hij zich op de Road bevindt. De waarde 1 staat voor de actie springen. De waarde 0 staat voor het stilstaan v.d. Agent. 
 ```csharp
   public override void OnActionReceived(ActionBuffers actions)
     {
@@ -219,7 +218,7 @@ Deze methode zal er voor zorgen dat de Agent (Taxi) zal gaan springen als canJum
 
  **OnCollisionEnter**<br/>
  
-De methode OnCollisionEnter wordt aangeroepen wanneer een collider/rigidbody een ander collider/rigidbody aanraakt. In ons project wordt er eerst en vooral gekeken of er collision is met de Road. De CompareTag() methode wordt gebruikt om de identiteit van het object te achterhalen waarmee de Agent (Taxi) in botsing treedt.
+De methode OnCollisionEnter wordt aangeroepen wanneer een collider/rigidbody een ander collider/rigidbody aanraakt. In ons project wordt er eerst en vooral gekeken of er een collision is met de Road. De CompareTag() methode wordt gebruikt om de identiteit van het object te achterhalen waarmee de Agent (Taxi) in botsing komt.
 
 ```csharp
   private void OnCollisionEnter(Collision collision)
@@ -232,7 +231,7 @@ De methode OnCollisionEnter wordt aangeroepen wanneer een collider/rigidbody een
  ```
  
  <br>
-In deze if-statement wordt er gekeken of er zich een collision voordoet met de PoliCar (Obstacle). Moest dit zich voordoen zal er een negatieve award van -1f worden toegewezen. Tot slot wordt de huidige episode beëndigd. 
+In dit if-statement wordt er gekeken of er zich een collision voordoet met de PoliCar (Obstacle). Moest deze situatie zich voordoen, dan zal er een negatieve beloning van -1f worden toegewezen. Tot slot wordt de huidige episode beëndigd. 
 
  ```csharp
         if (collision.transform.CompareTag("PoliceCar"))
@@ -255,7 +254,7 @@ Rijd de Agent (Taxi) op de Road en heeft de frietjes kunnen opnemen boven de Pol
 ```
 
 <br>
-Als laatste geven we de Agent (Taxi) een beloning als er succesvol over het obstakel (PoliceCar) is gesprongen. Wanneer er collision is met de tag "Point" , zal de Agent een reward van +0.2f ontvangen. De boolean gotFries wordt terug op True geplaatst.
+Als laatste geven we de Agent (Taxi) een beloning als er succesvol over het obstakel (PoliceCar) is gesprongen. Wanneer er collision is met de tag "Point" , zal de Agent een reward van +0.2f ontvangen. De boolean gotFries krijgt terug de waarde True.
 Dit alles wordt geïmplementeerd door onderstaande methode:
 
 ```csharp
@@ -270,7 +269,7 @@ private void OnTriggerEnter(Collider collision)
 ```
 
 <br>
-De point tag zie je hier duidelijk weergeven. Het is belangrijk dat je deze ook zelf toevoegd aan de Prefab French Frice. <br>
+De point tag zie je hier duidelijk weergeven. Het is belangrijk dat je deze ook zelf toevoegt aan de Prefab French Frice. <br>
 
 ![image](https://user-images.githubusercontent.com/61239203/145637484-081b4d84-7735-4659-8879-3f7b39393348.png)
 
