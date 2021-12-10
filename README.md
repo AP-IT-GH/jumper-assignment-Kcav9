@@ -36,7 +36,7 @@ Als we nu alle mogelijke situaties bekijken die zich kunnen voordoen dan kunnen 
 |  Naderende politiewagen  |  Niet springen  |   -1.0f   |
 |          Niets           |     Springen    |   -0.2f   |
 
-## Taxi
+# Taxi
 De taxi zal de rol van agent op zich nemen. Hij zal vervolgens dus een obstakel gaan observeren/detecteren zodat er op het juiste moment gesprongen kan worden. 
 
 ![image](https://user-images.githubusercontent.com/61239203/145558923-4153a262-916b-4cf9-b0bb-ae724e64d415.png)
