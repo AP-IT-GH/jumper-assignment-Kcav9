@@ -35,6 +35,22 @@ Als we nu alle mogelijke situaties bekijken die zich kunnen voordoen dan kunnen 
 |  Naderende politiewagen  |     Springen    |   +0.1f   |
 |  Naderende politiewagen  |  Niet springen  |   -1.0f   |
 |          Niets           |     Springen    |   -0.2f   |
+|  Openemen soda en fries  |     Springen    |   + 0.2f  |
+
+Belangrijk om er ook voor te zorgen dat in de functie **OnActionReceived()** er een kleine negatieve score wordt gegeven om te voorkomen dat de agent niet hele tijd zou springen.
+```csharp
+ public override void OnActionReceived(ActionBuffers actions)
+    {
+        var vectorAction = actions.DiscreteActions;
+        if (vectorAction[0] == 1)
+        {
+            AddReward(-0.01f);
+            Jump();
+        }
+            
+
+    }```
+
 
 # Speelruimte
 ## Taxi
