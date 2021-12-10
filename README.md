@@ -114,6 +114,28 @@ In onze Environment klasse zal de functie SpawnEnemies er voor zorgen dat de ene
     }
 ```
 
+**Obstacle.cs**
+In dit script wordt de snelheid bepaald van de obstakels (politiewagens). Er zal een min en max speed worden toegewezen volgens 2 SerializeFields.
+```csharp
+[SerializeField] private float minSpeed;
+[SerializeField] private float maxSpeed;
+```
+![image](https://user-images.githubusercontent.com/61239203/145625865-119d444e-898d-4523-8123-236f73c5c467.png)
+
+We hebben er voor gekozen om een random snelheid te genereren om er voor te zorgen dat het voor onze Agent niet te makkelijk is.
+
+```csharp
+private Rigidbody Rigidbody;
+private void Awake()
+{
+    Rigidbody = GetComponent<Rigidbody>();
+}
+private void FixedUpdate()
+{
+    Rigidbody.velocity = Vector3.back * Random.Range(minSpeed,maxSpeed);
+}
+```
+
 **Taxi.cs** <br />
 Het Taxi script wordt gebruikt door onze Agent. <br> ![image](https://user-images.githubusercontent.com/61239203/145587282-642c8a33-d562-4140-834f-fead3d4c3529.png)
  <br />
