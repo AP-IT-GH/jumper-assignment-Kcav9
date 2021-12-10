@@ -50,6 +50,12 @@ De acties die onze taxi uitvoert zijn gebaseerd op de observaties die worden gem
 De taxi zal vooral recht voorruit moeten kunnen kijken omdat de obstakels, in dit geval politiewagens van deze richting zullen komen. 
 ![image](https://user-images.githubusercontent.com/61239203/145288077-c0e823b3-1180-488d-b0f8-76d24f1231f0.png)
 
+## Police car
+Het obstakel waar onze agent rekening met zal gaan houden is de politiewagen. Deze is terug te vinden in de Prefab folder. 
+
+![image](https://user-images.githubusercontent.com/61239203/145559650-847df44d-e738-4046-8351-0d563a1b096a.png)
+
+
 ## Beschrijving code
 **Spelobjecten scripts (C#)** <br />
 Om voor een duidelijke structuur te zorgen maak je best een folder Scripts aan in je Assets van Unity. Hier zullen vervolgens alle scripts gebundeld en bewaard worden.
