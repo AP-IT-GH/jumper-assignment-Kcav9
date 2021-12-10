@@ -114,6 +114,24 @@ In onze Environment klasse zal de functie SpawnEnemies er voor zorgen dat de ene
     }
 ```
 
+**Taxi.cs** <br />
+Onze Taxi klasse is onze Agent. ![image](https://user-images.githubusercontent.com/61239203/145587282-642c8a33-d562-4140-834f-fead3d4c3529.png)
+ <br />
+ Dit script zorgt er voor dat we 
+In onze Environment klasse zal de functie SpawnEnemies er voor zorgen dat de enemies 1 voor 1 tevoorschijn komen, dit binnen een zelf gekozen tijdspanne.
+
+```csharp
+ public void SpawnEnemies()
+    {
+        GameObject newEnemy = Instantiate(policeCarPrefab.gameObject);
+
+        newEnemy.transform.SetParent(enemies.transform);
+        newEnemy.transform.localPosition = enemies.transform.localPosition;
+        newEnemy.transform.localRotation = enemies.transform.localRotation;
+
+    }
+```
+
 ## Training
 Als laatste stap bekijken we kort de trainingsfase. Maak een folder Learning aan in de Assets. In deze folder maak je een .yml file aan. In ons voorbeeld is dit dus Mover.yml. In dit bestand voeg je de juiste parameters toe. Tijdens onze training hebben we onderstaande waardes gebruikt: 
 
